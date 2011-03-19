@@ -47,7 +47,7 @@ exports.run = function(){
     assert.strictEqual('page', routeData.action);
     assert.strictEqual('3', routeData.args.id);
     
-    var routeData = route.getRouteData('/myadmin');
+    routeData = route.getRouteData('/myadmin');
     assert.strictEqual('admin', routeData.controller);
     assert.strictEqual('index', routeData.action);
     assert.strictEqual('2', routeData.args.id);
