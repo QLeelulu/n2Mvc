@@ -22,6 +22,7 @@
 + get  `/home/index` will call `exports.index_get`
 + post `/home/index` will call `exports.index`
 
+
     // controllers/home.js
     exports.index = function(){
         //return this.ar.raw('hello world');
