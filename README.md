@@ -22,16 +22,15 @@
 + get  `/home/index` will call `exports.index_get`
 + post `/home/index` will call `exports.index`
 
-
-    // controllers/home.js
-    exports.index = function(){
-        //return this.ar.raw('hello world');
-        return this.ar.view({msg: 'hello world'});
-    };
-    exports.index_get = function(){
-        //return this.ar.raw('hello world');
-        return this.ar.view({msg: 'hello world'});
-    };
+        // controllers/home.js
+        exports.index = function(){
+            //return this.ar.raw('hello world');
+            return this.ar.view({msg: 'hello world'});
+        };
+        exports.index_get = function(){
+            //return this.ar.raw('hello world');
+            return this.ar.view({msg: 'hello world'});
+        };
 
 
 ##Action Filter
