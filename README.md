@@ -19,8 +19,8 @@
 
 ##Controller And Action
 
-  get  `/home/index` will call `exports.index_get`
-  post `/home/index` will call `exports.index`
+  - get  `/home/index` will call `exports.index_get`
+  - post `/home/index` will call `exports.index`
   
     // controllers/home.js
     exports.index = function(){
