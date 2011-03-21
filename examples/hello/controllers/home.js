@@ -37,6 +37,7 @@ this.filters = [
 ];
 
 exports.index = function(fnNext){
+    this.res.cookies.clear('name');
     fnNext( this.ar.view({msg: 'hello world'}) );
 };
 exports.index.filters = [
@@ -44,7 +45,7 @@ exports.index.filters = [
 ];
 
 exports.index_post = function(fnNext){
-    fnNext( this.ar.view({msg: 'hello world -> get<br/>'}) );
+    fnNext( this.ar.view({msg: 'hello world -> post<br/>'}) );
 };
 
 exports.json = function(fnNext){
