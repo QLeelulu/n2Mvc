@@ -9,6 +9,10 @@ exports.projectDir = __dirname;
 
 exports.staticFileDir = 'static';
 
+exports.middlewares = [
+    'cookie',
+];
+
 exports.init = function(){
     this.route.static('^/favicon.ico');
     this.route.static('^/static/(.*)');

@@ -33,7 +33,7 @@ var myFilter = function(target){
 };
 
 this.filters = [
-    //new myFilter('homeController'), new myFilter('homeController2')
+    new myFilter('homeController'), new myFilter('homeController2')
 ];
 
 exports.index = function(fnNext){

@@ -92,7 +92,47 @@
 
 ##Middleware
 
-  coming soon
+		exports.beginRequest = function(ctx, fnNext){
+			// ctx.req --> the httpRequest object
+            // ctx.res --> the httpResponse object
+            // ctx.ar --> the actionresults method
+            // you can log or do other thing here
+		    fnNext();
+		};
+		
+		exports.beginMvcHandler = function(ctx, fnNext){
+			// ctx.req --> the httpRequest object
+            // ctx.res --> the httpResponse object
+            // ctx.routeData --> the route info
+            // ctx.ar --> the actionresults method
+		    fnNext();
+		};
+		
+		exports.endMvcHandler = function(ctx, fnNext){
+			// ctx.req --> the httpRequest object
+            // ctx.res --> the httpResponse object
+            // ctx.routeData --> the route info
+            // ctx.ar --> the actionresults method
+		    fnNext();
+		};
+		
+		exports.endRequest = function(ctx, fnNext){
+			// ctx.req --> the httpRequest object
+            // ctx.res --> the httpResponse object
+            // ctx.routeData --> the route info
+            // ctx.ar --> the actionresults method
+		    fnNext();
+		};
+		
+  Make sure call the `fnNext` to continue handler the request. To end the request, you can put any actionResult to `fnNext`, just like `fnNext('end')`.
+
+  Order of the middleware event execution is:
+    1. `beginRequest`
+    2. `beginMvcHandler`(if not the static file request)
+    2.    mvc handler (if not the static file request)
+    3. `endMvcHandler`(if not the static file request)
+    4. `endRequest`
+
 
 ##ViewEngine
 
