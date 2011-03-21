@@ -46,6 +46,8 @@
             // you can log or check the auth here
             if(!checkAuth(ctx.req)){
                 fnNext( this.ar.redirect('/login') );
+            }else{
+                fnNext();
             }
         };
         this.onControllerExecuted = function(ctx, fnNext){

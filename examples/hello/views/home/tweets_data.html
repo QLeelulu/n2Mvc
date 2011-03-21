@@ -1,0 +1,35 @@
+
+<ul>
+  <?js for(var i in tweets){ ?>
+  <?js var tweet = tweets[i], user = tweets[i].user; ?>
+	<li>
+		<div class="usericon">
+				<a class="user_head" href="###">
+					<img src="#{user.profile_image_url}" />
+				</a>
+		</div>
+		<div class="mainContent">
+			<div class="userName">
+				<a href="###">
+					#{user.screen_name}
+				</a>
+			</div>
+			<div class="msg">
+				<div class="tweet">
+					<div class="tweet_text">
+						#{tweet.text}
+					</div>
+					<?js if(tweet.thumbnail_pic){ ?>
+					<div>
+						<a target="_blank" href="javascript:void(0);" class="thumbnail_pic" >
+							<img class="pic" src="#{tweet.thumbnail_pic}" />
+						</a>
+					</div>
+					<?js } ?>
+				</div>
+			</div>
+		</div>
+		<br class="clear" />
+	</li>
+  <?js } ?>
+</ul>

@@ -1,0 +1,15 @@
+{# ../../header.html #}
+
+		<h3 class="title">最新微博</h3>
+		<div id="tweets">
+			正在获取微博内容...
+		</div>
+		<script>
+			$(document).ready(function(){
+				$.get('/home/tweets_data', function(data){
+					$("#tweets").html(data);
+				});
+			});
+		</script>
+
+{# ../../footer.html #}
