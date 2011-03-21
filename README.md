@@ -74,7 +74,8 @@
     // Add filter to the action
     exports.index.filters = [new myFilter()];
   
-  You must call the `fnNext` to continue handler the request. To end the request, you can put any actionResult to `fnNext`, just like `fnNext('end')`
+  You must call the `fnNext` to continue handler the request. To end the request, you can put any actionResult to `fnNext`, just like `fnNext('end')`.
+  
   Order of the filters execution is:
     1. `onControllerExecuting`
     2. `onActionExecuting`
