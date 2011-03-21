@@ -27,7 +27,7 @@
             //return this.ar.raw('hello world');
             fnNext( this.ar.view({msg: 'hello world'}) );
         };
-        exports.index_get = function(){
+        exports.index_get = function(fnNext){
             //return this.ar.raw('hello world');
             fnNext( this.ar.view({msg: 'hello world'}) );
         };
@@ -60,7 +60,7 @@
         this.onResultExecuting = function(ctx, fnNext){
             fnNext();
         };
-        this.onResultExecuted = function(ctx){
+        this.onResultExecuted = function(ctx, fnNext){
             fnNext();
         };
     };
@@ -68,8 +68,8 @@
     // Add filter to the controller
     this.filters = [new myFilter()];
     
-    exports.index = function(){
-        return this.ar.view({msg: 'hello world'});
+    exports.index = function(fnNext){
+        fnNext( this.ar.view({msg: 'hello world'}) );
     };
     // Add filter to the action
     exports.index.filters = [new myFilter()];
