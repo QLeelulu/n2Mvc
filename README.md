@@ -23,43 +23,45 @@
 + post `/home/index` will call `exports.index`
 
         // controllers/home.js
-        exports.index = function(){
+        exports.index = function(fnNext){
             //return this.ar.raw('hello world');
-            return this.ar.view({msg: 'hello world'});
+            fnNext( this.ar.view({msg: 'hello world'}) );
         };
         exports.index_get = function(){
             //return this.ar.raw('hello world');
-            return this.ar.view({msg: 'hello world'});
+            fnNext( this.ar.view({msg: 'hello world'}) );
         };
+
+  You must call the `fnNext` to continue handler the request.
 
 
 ##Action Filter
 
     var myFilter = function(){
-        this.onControllerExecuting = function(ctx){
+        this.onControllerExecuting = function(ctx, fnNext){
             // ctx.req --> the httpRequest object
             // ctx.res --> the httpResponse object
             // ctx.routeData --> the route info
             // ctx.ar --> the actionresults method
             // you can log or check the auth here
             if(!checkAuth(ctx.req)){
-                return this.ar.redirect('/login');
+                fnNext( this.ar.redirect('/login') );
             }
         };
-        this.onControllerExecuted = function(ctx){
-            //
+        this.onControllerExecuted = function(ctx, fnNext){
+            fnNext();
         };
-        this.onActionExecuting = function(ctx){
-            //
+        this.onActionExecuting = function(ctx, fnNext){
+            fnNext();
         };
-        this.onActionExecuted = function(ctx){
-            //
+        this.onActionExecuted = function(ctx, fnNext){
+            fnNext();
         };
-        this.onResultExecuting = function(ctx){
-            //
+        this.onResultExecuting = function(ctx, fnNext){
+            fnNext();
         };
         this.onResultExecuted = function(ctx){
-            //
+            fnNext();
         };
     };
     
@@ -71,7 +73,8 @@
     };
     // Add filter to the action
     exports.index.filters = [new myFilter()];
-
+  
+  You must call the `fnNext` to continue handler the request. To end the request, you can put any actionResult to `fnNext`, just like `fnNext('end')`
   Order of the filters execution is:
     1. `onControllerExecuting`
     2. `onActionExecuting`
@@ -81,6 +84,8 @@
     5. `onResultExecuted`
     6. `onActionExecuted`
     7. `onControllerExecuted`
+
+
 
 ##Middleware
 

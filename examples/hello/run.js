@@ -7,5 +7,4 @@
 var server = require('../../lib/server'),
     config = require('./config');
 
-
 server.createServer(config);

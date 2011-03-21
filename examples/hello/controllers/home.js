@@ -6,26 +6,29 @@
 var myFilter = function(target){
     this.target = target;
     
-    this.onControllerExecuting = function(ctx){
+    this.onControllerExecuting = function(ctx, fnNext){
         ctx.res.write(this.target + ': onControllerExecuting \r\n<br/>');
+        fnNext('end');
     };
-    this.onControllerExecuted = function(ctx){
+    this.onControllerExecuted = function(ctx, fnNext){
         ctx.res.write(this.target + ': onControllerExecuted \r\n<br/>');
-        return 'end';
+        fnNext('end');
     };
-    this.onActionExecuting = function(ctx){
+    this.onActionExecuting = function(ctx, fnNext){
         ctx.res.write(this.target + ': onActionExecuting \r\n<br/>');
-        
+        fnNext();
     };
-    this.onActionExecuted = function(ctx){
+    this.onActionExecuted = function(ctx, fnNext){
         ctx.res.write(this.target + ': onActionExecuted \r\n<br/>');
-        
+        fnNext();
     };
-    this.onResultExecuting = function(ctx){
+    this.onResultExecuting = function(ctx, fnNext){
         ctx.res.write(this.target + ': onResultExecuting \r\n<br/>');
+        fnNext();
     };
-    this.onResultExecuted = function(ctx){
+    this.onResultExecuted = function(ctx, fnNext){
         ctx.res.write(this.target + ': onResultExecuted \r\n<br/>');
+        fnNext();
     };
 };
 
@@ -33,19 +36,19 @@ this.filters = [
     new myFilter('homeController'), new myFilter('homeController2')
 ];
 
-exports.index = function(){
+exports.index = function(fnNext){
     //return this.ar.raw('hello world');
-    return this.ar.view({msg: 'hello world'});
+    fnNext( this.ar.view({msg: 'hello world'}) );
 };
 exports.index.filters = [
     new myFilter('indexAction'), new myFilter('indexAction2')
 ];
 
-exports.index_get = function(){
+exports.index_post = function(fnNext){
     //return this.ar.raw('hello world');
-    return this.ar.view({msg: 'hello world -> get<br/>'});
+    fnNext( this.ar.view({msg: 'hello world -> get<br/>'}) );
 };
 
-exports.json = function(){
-    return this.ar.json({msg: 'hello world'});
+exports.json = function(fnNext){
+    fnNext( this.ar.json({msg: 'hello world'}) );
 };
