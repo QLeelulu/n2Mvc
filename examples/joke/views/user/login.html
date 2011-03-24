@@ -1,0 +1,27 @@
+{# ../../header.html #}
+		<link rel="stylesheet" type="text/css" href="/static/css/tooltip.css" media="screen" />
+		<h3 class="title">登录</h3>
+		<form id="loginForm" method="post" onsubmit="return false">
+			<div id="showMsg">#{viewdata.error}</div>
+			<ul>
+				<li>用户名:<input type="text" name="username" reg="^\w{3,15}$" tip="请填写用户名" value="#{viewdata.username}" /></li>
+				<li>密码:<input type="text" name="password" reg="^.{6,}$" tip="输入你的密码" /></li>
+				<li><input type="submit" value="登录" id="btnLogin" /></li>
+			<ul>
+		</form>
+		
+		<script type="text/javascript" src="/static/js/tooltip.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var ttCheck = $('#loginForm input[tip], #loginForm input[reg]').tooltip();
+				$("#loginForm").submit(function(){
+					if(ttCheck.check()){
+						return true;
+					}
+					return false;
+				}).removeAttr('onsubmit');
+			});
+		</script>
+		
+
+{# ../../footer.html #}

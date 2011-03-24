@@ -1,0 +1,38 @@
+{# ../../header.html #}
+		<link rel="stylesheet" type="text/css" href="/static/css/tooltip.css" media="screen" /> 
+		<h3 class="title">注册</h3>
+		<div id="regForm">
+			<div id="showMsg"></div>
+			<ul>
+				<li>用户名:<input type="text" name="username" reg="^\w{3,15}$" tip="请填写用户名" /></li>
+				<li>密码:<input type="text" name="password" reg="^.{6,}$" tip="输入你的密码，最少6位" /></li>
+				<li>确认密码:<input type="text" name="password2" reg="^.{6,}$" tip="确认你的密码" /></li>
+				<li>Email:<input type="text" name="email" reg="^[a-z]([a-z0-9]*[-_\.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$" tip="电子邮件地址" /></li>
+				<li><input type="submit" value="提交" id="btnRegister" /></li>
+			<ul>
+		</div>
+		
+		<script type="text/javascript" src="/static/js/tooltip.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var ttCheck = $('#regForm input[tip], #regForm input[reg]').tooltip();
+				$("#btnRegister").click(function(){
+					if(ttCheck.check()){
+						var postData = {};
+						$("#regForm :text").each(function(){
+							postData[$(this).attr('name')] = $(this).val();
+						});
+						$.post('', postData, function(r){
+							if(r.success){
+								$("#showMsg").html('注册成功，正在跳转到登录页面..');
+								document.location.href = '/user/login'
+							}else{
+								alert(r.error);
+							}
+						});
+					}
+				});
+			});
+		</script>
+
+{# ../../footer.html #}

@@ -133,10 +133,19 @@
     3. `endMvcHandler`(if not the static file request)
     4. `endRequest`
 
+##Request and Response object
+
+	- `req.get`:  the querystring key-value object
+	- `req.post`: the post form data kev-value object
+	- `req.cookies`: the cookies key-value object
+	
+	- `res.cookies.set`: set the respose cookies: `res.cookies.set('name', 'value', {*options*})`. `options` is the same as cookie options.
+	- `res.cookies.clear`: delete the cookie: `res.cookies.clear('name', {*options*})`
 
 ##ViewEngine
 
-  coming soon
+  The viewdata you pass to the view is in the `viewdata` object:
+  `#{viewdata.***}` or `#{vd.***}`
   
 ## Authors
 

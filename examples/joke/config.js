@@ -9,7 +9,9 @@ exports.projectDir = __dirname;
 
 exports.staticFileDir = 'static';
 
-
+exports.middlewares = [
+    'cookie',
+];
 
 exports.init = function(){
     this.route.static('^/favicon.ico');
@@ -22,7 +24,3 @@ exports.init = function(){
         {id:'\\d+'}
     );
 };
-
-exports.middlewares = [
-    'cookie',
-];

@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	jQuery Tooltip + Validate
+</title>
+    <script src="js/jquery.pack.js" type="text/javascript"></script>
+	<style type="text/css">
+	.CreatePanel
+{
+	margin: 10px;
+	padding: 0;
+	}
+
+.CreatePanel h1
+{
+	font-size: 25px;
+	font-family: "微软雅黑" "幼圆" "arila";
+	font-weight: normal;
+	border-bottom: 3px solid #ccc;
+	padding: 5px;
+	margin: 0 0 7px 0;
+	}
+
+.BaseInfo
+{
+	margin: 0 auto;
+	width: 800px;
+	font: 13px arial;
+	}
+
+.BaseInfo ul
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+
+.BaseInfo ul li
+{
+	padding: 3px 0 3px 50px;
+	border-bottom: dotted 1px #666;
+	}
+
+.BaseInfo ul li label
+{
+	display: block;
+	width: 160px;
+	float: left;
+	font-size: 14px;
+	font-family: "微软雅黑" "幼圆" "arila";
+	background: url(/images/Right.gif) no-repeat 140px center;
+	}
+
+.BaseInfo ul li textarea,
+.BaseInfo ul li .setinput
+{
+	width: 580px;
+	font-size: 13px;
+	font-family: Arial;
+	}
+
+.BaseInfo ul li img.ShowImg
+{
+	margin-left: 160px;
+	}
+
+.BaseInfo .CheckBoxList
+{
+	*margin-top: -16px;
+	width: 580px;
+	}
+
+
+.BaseInfo .CheckBoxList input
+{
+	float: left;
+	}
+
+.BaseInfo .CheckBoxList label
+{
+	width: 100px;
+	float: none;
+	background-image: none;
+	}
+
+.BaseInfo table td h3.orderby
+{
+	font-family: Arial;
+	font-size: 50px;
+	color: #fff;
+	padding: 0;
+	margin: 10px;
+	opacity:0.7;
+    filter: alpha(opacity=70);
+	}
+
+.BaseInfo table td h5
+{
+	line-height: 20px;
+	border-bottom: dotted 1px #000;
+	padding: 0 0 0 10px;
+	margin: 0;
+	font-size: 13px;
+	color: #000;
+	}
+
+.BaseInfo table td div.content
+{
+	font-size:12px;
+	line-height: 17px;
+	}
+	</style>
+</head>
+<body id="ctl00_MainBody" class="admintrips">
+    <form name="aspnetForm" method="post" id="aspnetForm">
+<script src="js/Tooltip.mini.js" type="text/javascript"></script>
+<link href="css/Tooltip.css" rel="stylesheet" type="text/css" />
+<div class="CreatePanel">
+    <h1>创建航班列表</h1>
+    <div class="BaseInfo">
+        <ul>
+			<li>
+				<label>DropDownList</label>
+				<select id="ctl00_ContentPlaceHolder1_ctl00__dw" reg="\d{1}" tip="设置航班号(大写) 如: CZ1321">
+					<option value="" selected="selected"></option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="a">a</option>
+				</select>
+			</li>
+            <li>
+                <label>来回程</label>
+                <input id="ctl00_ContentPlaceHolder1_ctl00__isoneway" type="checkbox" name="ctl00$ContentPlaceHolder1$ctl00$_isoneway" /> 将当前航段设置为去程
+            </li>
+            <li>
+                <label>航班号</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_flightno" type="text" id="ctl00_ContentPlaceHolder1_ctl00__flightno" reg="\w{2}\d{4}" tip="设置航班号(大写) 如: CZ1321" toupper="true" /> (如: CZ1321)
+            </li>
+            <li>
+                <label>航司(2字代码)</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_airline" type="text" id="ctl00_ContentPlaceHolder1_ctl00__airline" reg="\w{2}" toupper="true" /> (注意大写)
+            </li>
+            <li>
+                <label>起飞时间</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_beingtime" type="text" id="ctl00_ContentPlaceHolder1_ctl00__beingtime" reg="\d{4}" tip="设置起飞时间 格式: hhmm" /> (格式: hhmm)
+            </li>
+            <li>
+                <label>抵达时间</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_endtime" type="text" id="ctl00_ContentPlaceHolder1_ctl00__endtime" reg="\d{4}" tip="设置抵达时间 格式: hhmm" /> (格式: hhmm)
+            </li>
+            <li>
+                <label>经停点</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_overstep" type="text" value="0" id="ctl00_ContentPlaceHolder1_ctl00__overstep" reg="\d{1}" />
+            </li>
+            <li>
+                <label>机型</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_airnumber" type="text" id="ctl00_ContentPlaceHolder1_ctl00__airnumber" reg="\d{3}" /> (如: 737)
+            </li>
+            <li>
+                <label>起飞机场</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_fromairport" type="text" id="ctl00_ContentPlaceHolder1_ctl00__fromairport" /> (如: 广州白云国际机场)
+            </li>
+            <li>
+                <label>抵达机场</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_toairport" type="text" id="ctl00_ContentPlaceHolder1_ctl00__toairport" /> (如: 首都国际机场)
+            </li>
+            <li>
+                <label>设置群组名</label>
+                <input name="ctl00$ContentPlaceHolder1$ctl00$_groupname" type="text" id="ctl00_ContentPlaceHolder1_ctl00__groupname" /> (如: 如果存在多个回来程, 以群组名区别)
+            </li>
+            <li>
+                <label>是否已售完</label>
+                <input id="ctl00_ContentPlaceHolder1_ctl00__issaleend" type="checkbox" name="ctl00$ContentPlaceHolder1$ctl00$_issaleend" /> 设置已售完
+            </li>
+            <li>
+                <label>设置为默认选择项</label>
+                <input id="ctl00_ContentPlaceHolder1_ctl00__isdefault" type="checkbox" name="ctl00$ContentPlaceHolder1$ctl00$_isdefault" /> 设置为默认选择项
+            </li>
+            <li>
+                <label>说明</label>
+                <textarea name="a" rows="10" width="100%" tip="显示相关的注释说明"></textarea>
+            </li>
+            <li>
+                <label>&nbsp;</label>
+                <input type="submit" name="ctl00$ContentPlaceHolder1$ctl00$_createairsubmit" value="创建新航段" id="ctl00_ContentPlaceHolder1_ctl00__createairsubmit" class="submit" onclick="alert(document.getElementById('ctl00_ContentPlaceHolder1_ctl00__dw').value);"/>
+            </li>
+
+        </ul>
+     </div>
+</div>
+
+<script language="javascript">
+var s="人";
+var reg=new RegExp("("+s+")","g");
+var str="中华人民共和国，中华人民共和国";
+var newstr=str.replace(reg,"<font color=red>$1</font>");
+document.write(newstr + "<br />");
+
+</script>
+
+</form>
+</body>
+</html>
