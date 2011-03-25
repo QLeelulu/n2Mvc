@@ -26,9 +26,14 @@
 				<div class="description">我们的囧囧人参</div> 
 			</div>
 			<div class="nav"> 
-				<ul class="clearfix"> 
-					<li class="title">微博：</li> 
-					<li><a href="/tweets">新浪微博最新微博</a></li>
+				<ul class="clearfix">
+					<?js if(req.user){ ?>
+					<li class="title">#{req.user.username},你好!</li> 
+					<li><a href="/user/logout">退出</a></li>
+					<?js }else{ ?>
+					<li><a href="/user/login">登录</a></li>
+					<li><a href="/user/register">注册</a></li>
+					<?js } ?>
 				</ul>
 			</div>
 		</div>

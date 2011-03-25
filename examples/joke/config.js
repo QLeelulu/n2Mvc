@@ -11,6 +11,7 @@ exports.staticFileDir = 'static';
 
 exports.middlewares = [
     'cookie',
+    'initUserInfo',
 ];
 
 exports.init = function(){

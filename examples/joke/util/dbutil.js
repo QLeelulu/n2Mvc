@@ -30,7 +30,10 @@ var MysqlOperator = exports.MysqlOperator = Class.extend({
     },
     query: function(sql, cb){
         this.dbpool.query(sql, function(err, rows, fields) {
-            cb(err, rows, fields);
+            if(cb){
+                cb(err, rows, fields);
+            }
+            console.log('end query')
         });
     },
     exec: function(method, table, values, where, cb){

@@ -18,6 +18,15 @@ exports.getUserByUsername = function(username, cb){
     );
 };
 
+exports.getUserByTicket = function(ticket, cb){
+    exports.query(
+        'SELECT * FROM user WHERE ticket="'+ticket+'"',
+        function(err, rows, fields){
+            return cb(err, rows[0]);
+        }
+    );
+};
+
 //exports.insert = function(values, cb){
 //    db.insert('user', values, cb);
 //};
