@@ -33,7 +33,7 @@ var MysqlOperator = exports.MysqlOperator = Class.extend({
             if(cb){
                 cb(err, rows, fields);
             }
-            console.log('end query')
+            console.log('end query: '+sql)
         });
     },
     exec: function(method, table, values, where, cb){
