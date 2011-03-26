@@ -33,7 +33,6 @@ var MysqlOperator = exports.MysqlOperator = Class.extend({
             if(cb){
                 cb(err, rows, fields);
             }
-            console.log('end query')
         });
     },
     exec: function(method, table, values, where, cb){
@@ -63,7 +62,7 @@ var MysqlOperator = exports.MysqlOperator = Class.extend({
     insert: function(table, values, cb){
         this.exec('C', table, values, '', function(err, rows, fields){
             var success = (!err && rows.affectedRows>0) ? true : false;
-            cb(err, success);
+            cb(err, success, rows.insertId);
         });
     },
     update: function(table, values, where, cb){

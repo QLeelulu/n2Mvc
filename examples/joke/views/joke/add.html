@@ -1,0 +1,36 @@
+{# ../../header.html #}
+		<link rel="stylesheet" type="text/css" href="/static/css/tooltip.css" media="screen" /> 
+		<h3 class="title">发表囧囧</h3>
+		<div id="addJokeForm">
+			<div id="showMsg"></div>
+			<ul>
+				<li>标题:<input type="text" name="title" /></li>
+				<li>内容:<textarea type="text" name="content" reg="^.{6,}$" ></textarea></li>
+				<li><input type="submit" value="提交" id="btnAdd" /></li>
+			<ul>
+		</div>
+		
+		<script type="text/javascript" src="/static/js/tooltip.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var ttCheck = $('#addJokeForm input[reg], #addJokeForm textarea[reg]').tooltip();
+				$("#btnAdd").click(function(){
+					if(ttCheck.check()){
+						var postData = {};
+						$("#addJokeForm :text, #addJokeForm textarea").each(function(){
+							postData[$(this).attr('name')] = $(this).val();
+						});
+						$.post('', postData, function(r){
+							if(r.success){
+								$("#showMsg").html('发表成功，正在跳转..');
+								document.location.href = '/joke/show/' + r.id;
+							}else{
+								alert(r.error);
+							}
+						});
+					}
+				});
+			});
+		</script>
+
+{# ../../footer.html #}

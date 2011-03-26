@@ -9,7 +9,6 @@ exports.beginMvcHandler = function(ctx, fnNext){
     var ticket = ctx.req.cookies.ttest;
     if(ticket){
         userModel.getUserByTicket(ticket,function(err, user){
-            console.log('initUser')
             if(!err){
                 ctx.req.user = user;
             }

@@ -19,9 +19,15 @@ exports.init = function(){
     this.route.static('^/static/(.*)');
     
     this.route.map(
-        'default',
-        '/{controller}/{action}/',
+        'idRoute',
+        '/{controller}/{action}/{id}/',
         {controller:'home', action:'index'},
         {id:'\\d+'}
+    );
+    
+    this.route.map(
+        'default',
+        '/{controller}/{action}/',
+        {controller:'home', action:'index'}
     );
 };

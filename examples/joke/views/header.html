@@ -27,6 +27,8 @@
 			</div>
 			<div class="nav"> 
 				<ul class="clearfix">
+					<li><a href="/joke/add">添加我的囧囧</a></li>
+					<span style="float:right;">
 					<?js if(req.user){ ?>
 					<li class="title">#{req.user.username},你好!</li> 
 					<li><a href="/user/logout">退出</a></li>
@@ -34,6 +36,7 @@
 					<li><a href="/user/login">登录</a></li>
 					<li><a href="/user/register">注册</a></li>
 					<?js } ?>
+					</span>
 				</ul>
 			</div>
 		</div>

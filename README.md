@@ -24,11 +24,13 @@
 
         // controllers/home.js
         exports.index = function(fnNext){
-            //return this.ar.raw('hello world');
+            // this.req --> the httpRequest object
+            // this.res --> the httpResponse object
+            // this.routeData --> the route info
+            // this.ar --> the actionresults method(view, raw, json, redirect, redirectPermanent, notFound, notModified, error)
             fnNext( this.ar.view({msg: 'hello world'}) );
         };
         exports.index_get = function(fnNext){
-            //return this.ar.raw('hello world');
             fnNext( this.ar.view({msg: 'hello world'}) );
         };
 
