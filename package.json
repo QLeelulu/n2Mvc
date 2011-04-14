@@ -1,0 +1,15 @@
+{
+  "name": "n2Mvc",
+  "version": "0.1",
+  "description": "A Web Mvc Framework mostly like ASP.NET MVC",
+  "keywords": ["mvc", "web", "framework"],
+  "repository": "git://github.com/QLeelulu/n2Mvc.git",
+  "author": [
+  		"QLeelulu <QLeelulu@gmail.com> (https://github.com/QLeelulu)",
+		"fengmk2 <fengmk2@gmail.com> (https://github.com/fengmk2)"
+  ],
+  "dependencies": {
+  },
+  "main": "index",
+  "engines": { "node": ">= 0.4.1" }
+}
