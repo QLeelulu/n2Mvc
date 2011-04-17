@@ -9,4 +9,6 @@ exports.utilities = require('./lib/util/utilities');
 
 exports.actionResults = require('./lib/actionresults');
 
+exports.forms = require('./lib/form');
+
 exports.server = require('./lib/server');
