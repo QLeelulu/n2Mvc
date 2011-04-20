@@ -17,7 +17,7 @@ exports.run = function(){
     
     route.map(
         'default',
-        '/{controller}/{action}/{id}',
+        '/{controller}/{action}/{id}/.*',
         {controller:'home', action:'index', id:'2'},
         {}
     );
