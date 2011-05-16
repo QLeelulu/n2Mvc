@@ -3,6 +3,8 @@
  * @blog http://qleelulu.cnblogs.com
  */
 
+var fs = require('fs');
+
 var myFilter = function(target){
     this.target = target;
     
@@ -45,6 +47,16 @@ exports.index.filters = [
 ];
 
 exports.index_post = function(fnNext){
+    //console.dir(this.req)
+    if(this.req.files && this.req.files.testfile){
+        console.log(this.req.files.testfile.path)
+        console.log('/home/qleelulu/bak/'+this.req.files.testfile.filename)
+        fs.rename(this.req.files.testfile.path, 
+                  '/home/qleelulu/bak/'+this.req.files.testfile.filename)
+        //fs.writeFileSync('/home/qleelulu/bak/'+this.req.files.testfile.filename, 
+        //                 this.req.files.testfile.data, 
+        //                 'binary');
+    }
     fnNext( this.ar.view({msg: 'hello world -> post<br/>'}) );
 };
 

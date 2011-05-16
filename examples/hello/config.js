@@ -25,4 +25,5 @@ exports.init = function(){
 
 exports.middlewares = [
     'cookie',
+    'multipart'
 ];

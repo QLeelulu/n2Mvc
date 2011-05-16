@@ -5,6 +5,11 @@
 		<title>Untitled Document</title>
 	</head>
 	<body>
-		#{viewdata.msg}!!!
+		#{it.viewdata.msg}!!!
+		<form method="post" enctype="multipart/form-data">
+			<input type="file" name="testfile">
+			<input type="text" name="name" />
+			<input type="submit" value="submit" />
+		</form>
 	</body>
 </html>
