@@ -149,6 +149,12 @@
   The viewdata you pass to the view is in the `viewdata` object:
   `#{viewdata.***}` or `#{vd.***}`
   
+  HtmlHelper: 
+    + helper file put in `projectDir/helpers/`
+    + eg. `projectDir/helpers/timeFormat.js`
+    + then use in the view like this: `var tf = Helper('timeFormat');`  
+  
+  
 ## Authors
 
  - QLeelulu
