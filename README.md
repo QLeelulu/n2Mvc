@@ -150,9 +150,10 @@
   `#{viewdata.***}` or `#{vd.***}`
   
   HtmlHelper: 
-    + helper file put in `projectDir/helpers/`
-    + eg. `projectDir/helpers/timeFormat.js`
-    + then use in the view like this: `var tf = Helper('timeFormat');`  
+  
+     + helper file put in `projectDir/helpers/`
+     + eg. `projectDir/helpers/timeFormat.js`
+     + then use in the view like this: `var tf = Helper('timeFormat');`  
   
   
 ## Authors
